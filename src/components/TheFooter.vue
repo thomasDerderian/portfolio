@@ -3,7 +3,7 @@
 <template>
   <footer class="site-footer">
     <div class="footer-inner">
-      <p>&copy; {{ new Date().getFullYear() }} Thomas Derderian. All rights reserved.</p>
+      <p>2026 Thomas Derderian.</p>
     </div>
   </footer>
 </template>
@@ -13,6 +13,7 @@
   border-top: 1px solid var(--color-border);
   padding: 2rem;
   text-align: center;
+  width: 100%;
 }
 
 .footer-inner p {

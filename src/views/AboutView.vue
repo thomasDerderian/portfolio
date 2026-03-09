@@ -5,20 +5,25 @@
     <section class="about-section">
       <h1>About Me</h1>
       <p>
-        Hi! I'm a developer passionate about building great web experiences.
-        I specialize in modern JavaScript frameworks and enjoy solving complex
-        problems with clean, maintainable code.
+        Hi! I'm a developer passionate about building great web experiences and useful applications.
       </p>
-      <div class="skills">
-        <h2>Skills</h2>
-        <ul>
-          <li>Vue.js</li>
-          <li>JavaScript / TypeScript</li>
-          <li>HTML &amp; CSS</li>
-          <li>Node.js</li>
-          <li>Git &amp; GitHub</li>
-        </ul>
-      </div>
+      <p>
+        I'm currently studying at IUT Lyon1 Bourg en Bresse, pursuing a BUT Informatique degree. My journey into tech
+        started with a drawing app I developed in Python on a calculator during math classes, and later a school project
+        about sumo robots, where I worked on the software.
+      </p>
+      <p>
+        Outside of coding, I love being active and connecting with nature. My hobbies include swimming, biking, running,
+        and free diving. Whether it's exploring underwater or cycling through diversified landscapes, I find inspiration
+        in the
+        outdoors and enjoy challenging myself.
+      </p>
+      <p>
+        I've also had the chance to travel a lot, discovering new cultures and landscapes. Some of my favorite
+        destinations include Brazil, Florida, the Caribbean islands, Greece, Portugal, Italy and south of France. These
+        experiences have
+        broadened my perspective, inspired my creativity, and taught me the value of diversity and exploration.
+      </p>
     </section>
   </main>
 </template>

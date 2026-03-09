@@ -4,13 +4,12 @@
   <section class="hero">
     <div class="hero-content">
       <h1 class="hero-title">Hi, I'm <span class="highlight">Thomas Derderian</span></h1>
-      <p class="hero-subtitle">Full-Stack Developer &amp; Creative Problem Solver</p>
+      <p class="hero-subtitle">Student - Full-Stack Web Developer</p>
       <p class="hero-description">
-        I build modern, performant web applications with clean code and great user experiences.
+        I built tools to help manage modular applications. Now, I focus on developing modern MES web apps—software that helps factories run smoothly by tracking production, scheduling tasks, and monitoring operations in real time.
       </p>
       <div class="hero-actions">
-        <RouterLink to="/projects" class="btn btn-primary">View My Work</RouterLink>
-        <RouterLink to="/contact" class="btn btn-secondary">Get In Touch</RouterLink>
+        <RouterLink to="/about" class="btn btn-primary">About me</RouterLink>
       </div>
     </div>
   </section>
