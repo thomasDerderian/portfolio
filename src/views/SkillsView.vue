@@ -1,18 +1,18 @@
 <script setup>
 const skills = [
   {
-    title: 'Frameworks & Libraries',
-    items: ['Vue.js / PrimeVue/Quasar', 'ASP.NET / Blazor / MudBlazor', 'Spring Boot', 'Django REST Framework', 'CakePHP', 'Symfony', 'Bootstrap', 'Tailwind CSS']
-  },
-  {
     title: 'Languages & Technologies',
     items: ['JavaScript / TypeScript', 'HTML & CSS', 'C#', 'Java', 'Python', 'PHP', 'SQL', 'REST APIs']
   },
   {
-    title: 'Tools',
-    items: ['Git / GitLab / GitExt', 'Docker', 'VS Code / Visual Studio / Eclipse / IntelliJ IDEA / Android Studio', 'Bruno', 'Figma', 'Trello', 'Notion']
+    title: 'Frameworks & Libraries',
+    items: ['Vue.js / PrimeVue / Quasar', 'ASP.NET / Blazor / MudBlazor', 'Spring Boot', 'Django REST Framework', 'CakePHP', 'Symfony', 'Bootstrap', 'Tailwind CSS']
   },
   {
+    title: 'Tools',
+    items: ['VS Code / Visual Studio / Eclipse / IntelliJ IDEA / Android Studio', 'Copilot', 'Git / GitExt / GitLab / GitHub', 'Docker', 'Bruno', 'Figma', 'Trello', 'Notion', 'Lucid / LucidCharts', 'MySQL Workbench']
+  },
+  { 
     title: 'Languages',
     items: ['French (native)', 'English (TOEIC B2)']
   }
@@ -42,7 +42,7 @@ const skills = [
 
 <style scoped>
 .skills-page {
-  padding: 4rem 2rem;
+  padding: 2rem 2rem;
   max-width: 1000px;
   margin: 0 auto;
 }
@@ -83,6 +83,7 @@ const skills = [
 }
 
 .skill-card li {
-  margin: 0.35rem 0;
+  margin: 0.7rem 0;
+  line-height: 1.2;
 }
 </style>

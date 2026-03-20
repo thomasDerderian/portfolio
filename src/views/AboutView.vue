@@ -30,7 +30,7 @@
 
 <style scoped>
 .about-page {
-  padding: 4rem 2rem;
+  padding: 2rem 2rem;
   max-width: 800px;
   margin: 0 auto;
 }
