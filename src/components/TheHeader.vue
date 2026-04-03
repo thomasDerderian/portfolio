@@ -1,5 +1,6 @@
 <script setup>
-import { Monitor, Moon, Sun, Linkedin } from 'lucide-vue-next'
+import { ref } from 'vue'
+import { Monitor, Moon, Sun, Linkedin, Menu, X } from 'lucide-vue-next'
 import { useTheme } from '../composables/useTheme'
 
 const { currentTheme, setTheme, THEMES } = useTheme()
@@ -15,12 +16,24 @@ const themeLabels = {
   dark: 'Dark',
   light: 'Light'
 }
+
+const menuOpen = ref(false)
+
+function toggleMenu() {
+  menuOpen.value = !menuOpen.value
+}
+
+function closeMenu() {
+  menuOpen.value = false
+}
 </script>
 
 <template>
   <header class="site-header">
     <div class="header-inner">
-      <RouterLink to="/" class="logo">Thomas Derderian</RouterLink>
+      <RouterLink to="/" class="logo" @click="closeMenu">Thomas Derderian</RouterLink>
+
+      <!-- Desktop nav -->
       <div class="nav-container">
         <nav class="nav">
           <RouterLink to="/">Home</RouterLink>
@@ -51,7 +64,55 @@ const themeLabels = {
           <Linkedin :size="20" :stroke-width="2" />
         </a>
       </div>
+
+      <!-- Burger button (mobile only) -->
+      <button
+        class="burger-btn"
+        @click="toggleMenu"
+        :aria-label="menuOpen ? 'Close menu' : 'Open menu'"
+        :aria-expanded="menuOpen"
+      >
+        <X v-if="menuOpen" :size="24" :stroke-width="2" />
+        <Menu v-else :size="24" :stroke-width="2" />
+      </button>
     </div>
+
+    <!-- Mobile menu overlay -->
+    <Transition name="mobile-menu">
+      <div v-if="menuOpen" class="mobile-menu">
+        <nav class="mobile-nav">
+          <RouterLink to="/" @click="closeMenu">Home</RouterLink>
+          <RouterLink to="/about" @click="closeMenu">About</RouterLink>
+          <RouterLink to="/skills" @click="closeMenu">Skills</RouterLink>
+          <RouterLink to="/projects" @click="closeMenu">Projects</RouterLink>
+        </nav>
+        <div class="mobile-footer">
+          <div class="theme-selector">
+            <button
+              v-for="theme in Object.values(THEMES)"
+              :key="theme"
+              :class="['theme-btn', { active: currentTheme === theme }]"
+              :title="themeLabels[theme]"
+              @click="setTheme(theme)"
+              :aria-label="`Switch to ${themeLabels[theme]} theme`"
+            >
+              <component :is="themeIcons[theme]" :size="20" :stroke-width="2" />
+            </button>
+          </div>
+          <a
+            href="https://www.linkedin.com/in/thomas-derderian/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-link"
+            title="LinkedIn"
+            aria-label="Follow me on LinkedIn"
+            @click="closeMenu"
+          >
+            <Linkedin :size="20" :stroke-width="2" />
+          </a>
+        </div>
+      </div>
+    </Transition>
   </header>
 </template>
 
@@ -62,9 +123,6 @@ const themeLabels = {
   z-index: 100;
   background-color: var(--color-background);
   border-bottom: 1px solid var(--color-border);
-  height: 80px;
-  display: flex;
-  align-items: center;
   width: 100%;
 }
 
@@ -73,6 +131,7 @@ const themeLabels = {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 2rem;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -169,26 +228,84 @@ const themeLabels = {
   color: var(--vt-c-green);
 }
 
+/* Burger button — hidden on desktop */
+.burger-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.burger-btn:hover {
+  color: var(--vt-c-green);
+  background-color: rgba(0, 200, 100, 0.08);
+}
+
+/* Mobile menu panel */
+.mobile-menu {
+  background-color: var(--color-background);
+  border-top: 1px solid var(--color-border);
+  padding: 1.5rem 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mobile-nav a {
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.6rem 0.75rem;
+  border-radius: 0.75rem;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.mobile-nav a:hover,
+.mobile-nav a.router-link-active {
+  color: var(--vt-c-green);
+  background-color: rgba(0, 200, 100, 0.08);
+}
+
+.mobile-footer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--color-border);
+}
+
+/* Mobile menu transition */
+.mobile-menu-enter-active,
+.mobile-menu-leave-active {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.mobile-menu-enter-from,
+.mobile-menu-leave-to {
+  opacity: 0;
+  transform: translateY(-0.5rem);
+}
+
 @media (max-width: 768px) {
-  .header-inner {
-    padding: 0 1rem;
-  }
-
   .nav-container {
-    gap: 1rem;
+    display: none;
   }
 
-  .nav {
-    gap: 1rem;
-    font-size: 0.85rem;
-  }
-
-  .nav a {
-    padding: 0.25rem 0.5rem;
-  }
-
-  .logo {
-    font-size: 1rem;
+  .burger-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 </style>
