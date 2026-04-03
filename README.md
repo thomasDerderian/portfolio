@@ -2,6 +2,8 @@
 
 Thomas Derderian's personal portfolio built with Vue.js 3 and Vite.
 
+**Live site:** https://thomasderderian.github.io/portfolio/
+
 ## Recommended IDE Setup
 
 [VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
@@ -42,3 +44,22 @@ npm run build
 ```sh
 npm run lint
 ```
+
+## Deployment (GitHub Pages)
+
+The site is automatically deployed to GitHub Pages via the [`.github/workflows/static.yml`](.github/workflows/static.yml) workflow whenever changes are pushed to `main`.
+
+### How it works
+
+1. The workflow installs dependencies, runs `npm run build`, and publishes the `dist/` folder to GitHub Pages.
+2. Vite is configured with `base: '/portfolio/'` (in `vite.config.js`) so all assets load correctly from the project sub-path.
+3. Vue Router uses **hash mode** (`createWebHashHistory`) so that page refreshes and direct links like `/#/about` work on GitHub Pages without any server-side URL rewriting.
+
+### GitHub Pages settings
+
+In the repository **Settings → Pages**, set the source to **GitHub Actions** (not a branch) so the workflow controls what gets published.
+
+### Base path note
+
+If you ever rename this repository, update `base` in `vite.config.js` to match the new repository name (e.g. `base: '/new-repo-name/'`).
+
